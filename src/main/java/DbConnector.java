@@ -16,12 +16,6 @@ public class DbConnector {
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("NOT Connected to the database");
-        } finally {
-            try {
-                connection.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
         return connection;
     }
