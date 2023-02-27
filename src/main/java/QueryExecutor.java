@@ -2,13 +2,14 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class QueryExecutor {
     public static ResultSet executeSelect(String selectQuery) {
-        Connection connection = null;
+
         try {
-            connection = DbConnector.connect();
+            Connection connection = DbConnector.connect();
             Statement statement = connection.createStatement();
             return statement.executeQuery(selectQuery);
         } catch (SQLException e) {
@@ -62,11 +63,19 @@ public class QueryExecutor {
     }
     public static void  dropRecord(){
         Scanner scanner = new Scanner(System.in);
+        int id;
         System.out.println("Podaj numer rekorud do usuniecia: ");
-        int id = scanner.nextInt();
+        while (true) {
+            try {
+                id = scanner.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("To nie jest liczba całkowita opisująca rekord. Podaj ID rekordu ponownie:");
+                scanner.next();
+            }
+        }
         String query = "DELETE FROM users WHERE id="+id;
         executeQuery(query);
-
     }
 }
 

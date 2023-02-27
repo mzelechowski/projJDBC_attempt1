@@ -32,7 +32,7 @@ public class MenuProvider {
                 QueryExecutor.dropRecord();
                 break;
             case 0:
-                System.out.println("Wybrałeś 0 - kończę program Miłego dnia. Bye");
+                System.out.println("Wybrales 0 - konczę program Milego dnia. Bye");
                 break;
 
             default:

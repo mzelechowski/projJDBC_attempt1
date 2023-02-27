@@ -1,1 +1,4 @@
 Main.class
+QueryExecutor.class
+MenuProvider.class
+DbConnector.class
